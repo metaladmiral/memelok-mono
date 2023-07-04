@@ -45,9 +45,6 @@ else {
 	</script>
 </head>
 <body>
-
-	<img src="static-assets/img/background.jpg" class="mainimg" alt="">
-
 	<div class="overlayChkEmail">
 	
 		<div class="enterotp">
@@ -84,12 +81,24 @@ else {
 	<div class="nav_main">
 		
 		<div class="logo">
-			<img src="././static-assets/img/icon-main.png">
+			<img src="././static-assets/img/logo7.png">
 		</div>
 
 	</div>
 
 	<div class="main">
+
+	<div class="left">
+		
+		<div class="background">
+			<img src="./static-assets/img/Optimized-more-photocollage.png" style="filter: grayscale(95%) opacity(40%);" alt="">
+		</div>
+
+	</div>
+
+	<script>
+		
+	</script>
 
 	<div class="flex_wrapper">
 
@@ -101,7 +110,7 @@ else {
 
 				<div class="loader spinner"></div>
 
-				<span onclick="openSignup()" style='color: var(--hover-color);'><font>Signup</font> <i style="font-size: 12px;" class="far fa-arrow-circle-right"></i></span>
+				<span onclick="openSignup()"><font>Signup</font> <i style="font-size: 12px;" class="far fa-arrow-circle-right"></i></span>
 
 			</div>
 
@@ -143,7 +152,7 @@ else {
 
 				<br>
 
-				<div style="position: relative;left: 5px;"><span style="font-size: 13.75px;">Not a Member Yet?</span> <br> <a href="#" style="font-size: 13px;color: var(--hover-color);" onclick="opensignup();return false;">Sign Up</a></div>
+				<div style="position: relative;left: 5px;"><span style="font-size: 13.75px;">Not a Member Yet?</span> <br> <a href="#" style="font-size: 13px;color: blue;" onclick="opensignup();return false;">Sign Up</a></div>
 
 			</div>
 
@@ -333,7 +342,16 @@ else {
 
 
 	</div>
-	
+	<div class="bottom_nav">
+		<center>
+			<div class="text">
+				<ul style="list-style: none;">
+					<li><a href="/about-us" target="_blank" style="color: blue;font-size: 12px;">About Us</a> <span style="color: #333;">&bull;</span> <a href="/terms" target="_blank" style="color: blue;font-size: 12px;">Terms</a></li>
+					<li style="color: gray;font-size: 12px;">A PS Production &copy; <?php echo date('Y'); ?></li>
+				</ul>
+			</div>
+		</center>
+	</div>
 
 	<script src="static-assets/scripts/login.js"></script>
 
