@@ -137,17 +137,17 @@ function focusInput(inputType) {
 
 function removeFocusInput(inputType) {
     if (inputType === "usr") {
-        document.querySelector(".usrdiv .highlighter").style.background = "rgba(0, 0, 0, 0.60)";
+        document.querySelector(".usrdiv .highlighter").style.background = "transparent";
         document.querySelector(".usrdiv .highlighter i").style.color = "white";
         var usrHeight = parseInt(window.getComputedStyle(document.querySelector(".iusr")).height) + 1;
         document.querySelector(".usrdiv .highlighter").style.height = usrHeight.toString() + "px";
     } else {
-        document.querySelector(".passdiv .highlighter").style.background = "rgba(0, 0, 0, 0.60)";
+        document.querySelector(".passdiv .highlighter").style.background = "transparent";
         document.querySelector(".passdiv .highlighter i").style.color = "white";
         var passHeight = parseInt(window.getComputedStyle(document.querySelector(".ipass")).height) + 1;
         document.querySelector(".passdiv .highlighter").style.height = passHeight.toString() + "px";
     }
-    document.querySelector(".right .top").style.borderBottom = "1px solid var(--main-border)";
+    document.querySelector(".right .top").style.borderBottom = "1px solid white";
 }
 
 function openSignup() {
