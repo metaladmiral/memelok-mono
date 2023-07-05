@@ -214,7 +214,7 @@ else {
 						<input type="hidden" id='genderval' value="0">
 
 						<div style="margin-left: 5px;">
-							<label for="gender" style="font-size: 14px;color: gray;">Gender: </label>
+							<label for="gender" style="font-size: 14px;color: white;">Gender: </label>
 							<input type="radio" value="male" name="gender" id='gender_male' style="position: relative;top:1.5px;" onchange="document.querySelector('#genderval').setAttribute('value', 'male');"><font style="font-size: 13px;margin-left: 1.5px;">Male</font>
 							<input type="radio" value="female" name="gender" id='gender_female' style="position: relative;top:1.5px;" onchange="document.querySelector('#genderval').setAttribute('value', 'female');"><font style="font-size: 13px;margin-left: 1.5px;">Female</font>
 							<input type="radio" value="other" name="gender" id='gender_other' style="position: relative;top:1.5px;" onchange="document.querySelector('#genderval').setAttribute('value', 'other');"><font style="font-size: 13px;margin-left: 1.5px;">Other</font>
@@ -225,7 +225,7 @@ else {
 					<br>
 
 					<div class="bio">
-						<label style="font-size: 14px;color: gray;position: relative;left: 5px;">Bio: </label>
+						<label style="font-size: 14px;color: gray;position: relative;left: 5px;color:white;">Bio: </label>
 						<br>
 						<p><textarea name="" id="" maxlength="100" placeholder="Type your Bio.." spellcheck="false" autocomplete="false" onfocus="document.querySelector('.right .top').style.borderBottom = '2px solid var(--hover-color)';document.querySelector('.bio label').style.color = 'var(--hover-color)';document.querySelector('.bio label').style.fontWeight = '600';scrollfbio();" onfocusout="document.querySelector('.right .top').style.borderBottom = '1px solid var(--main-border)';document.querySelector('.bio label').style.color = 'gray';document.querySelector('.bio label').style.fontWeight = '400';"></textarea></p>
 					</div>
@@ -238,7 +238,7 @@ else {
 
 					<div class="topics">
 						
-						<span class="topspan" style="font-size: 12px;color: gray;"><i class="fas fa-info-circle" style="position: relative;top:0px;"></i> Select your interests.</span>
+						<span class="topspan" style="font-size: 12px;color: white;"><i class="fas fa-info-circle" style="position: relative;top:0px;color:white;"></i> Select your interests.</span>
 					
 
 					<div class="bottom">
@@ -284,9 +284,9 @@ else {
 
 					<div class="birthday">
 						
-						<label style="font-size: 14px;color: gray;position: relative;left: 5px;padding-right: 5px;">Birthday: </label>	
+						<label style="font-size: 14px;color: white;position: relative;left: 5px;padding-right: 5px;">Birthday: </label>	
 						
-						<select name="day" onchange="document.querySelector('.birthday select[name=day]').setAttribute('value', this.value);"><option value="0" selected="1">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+						<select class='border: 1px solid white;color:white;background:transparent;' name="day" onchange="document.querySelector('.birthday select[name=day]').setAttribute('value', this.value);"><option value="0" selected="1">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
 
 						<select name="month" onchange="document.querySelector('.birthday select[name=month]').setAttribute('value', this.value);"><option value="0" selected="1">Month</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sept</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>
 
