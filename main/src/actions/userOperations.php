@@ -188,6 +188,59 @@ class userOperations extends db {
 
 	}
 
+	public function getUserDetails() {
+		$uid = $_SESSION['UID'];
+
+		$state = $_POST['state'];
+
+		if($state=='enabled') {
+			$la = date("Y-m-d H:i:s", strtotime(date('h:i:sa')));
+			$query = db::pconnect()->prepare("UPDATE `users` SET `last_activity`='$la' WHERE `uid`='$uid'");
+			$query->execute();
+		}
+
+		$dbn = "usr_".$uid;
+		$query = db::mconnect($dbn)->prepare("SELECT uid FROM `friends`");
+		$query->execute();
+		
+		$friends = array();
+		while($row=$query->fetch(PDO::FETCH_ASSOC)) {
+			array_push($friends, $row['uid']);
+		}
+		$friends = json_encode($friends);
+
+		$query = db::mconnect($dbn)->prepare("SELECT PID as pid FROM `mypages`");
+		$query->execute();
+
+		$mypagesarr = array();
+
+		while ($row=$query->fetch(PDO::FETCH_ASSOC)) {
+			array_push($mypagesarr, $row['pid']);
+		}
+
+
+		$query = db::mconnect($dbn)->prepare("SELECT pid as pid FROM `pagesfollowing`");
+		$query->execute();
+		
+		$pagesfollowingarr = array();
+
+		while ($row=$query->fetch(PDO::FETCH_ASSOC)) {
+			array_push($pagesfollowingarr, $row['pid']);
+		}		
+
+		$pagesfollowingarr = json_encode($pagesfollowingarr);
+		$mypagesarr = json_encode($mypagesarr);
+
+		$query = db::mconnect($dbn)->prepare("SELECT * FROM `notifications`");
+		$query->execute();
+		$rows = $query->rowCount();
+
+		$array = array("noti_count"=>$rows, "friends"=>$friends, "mypagesarr"=>$mypagesarr, "pagesfollowing"=>$pagesfollowingarr);
+		$json = json_encode($array);
+
+		return $json;
+	}
+
 }
 
 $obj = new userOperations;
@@ -203,6 +256,9 @@ if(isset($_GET['action']) && !empty($_GET['action'])) {
     }
     else if($act=='update-chatid') {
         echo $obj->updateChatId(); 
+    }
+    else if($act=='get-user-details') {
+        echo $obj->getUserDetails(); 
     }
     else {
         header('Location: ../../notfound.html');

@@ -27,7 +27,7 @@ function getFriendRequestsCount(e) {
 
 setInterval(function(){getFriendRequestsCount(1);}, 6500);
 
-function update_content() {
+function updateUserDetails() {
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
         if(this.status=200 && this.readyState==4) {
@@ -46,12 +46,12 @@ function update_content() {
     var state = document.querySelector('.left_divider .top_heading').getAttribute('state');
     var formdata = new FormData();
     formdata.append('state', state);
-    xml.open("POST", "/api/updateContent");
+    xml.open("POST", "/api/userOperations/get-user-details");
     xml.withCredentials = true;
     xml.send(formdata);
 }
-updateconteinterval = setInterval(function(){
-    update_content();
+updateUserDetailsInterval = setInterval(function(){
+    updateUserDetails();
 }, 5000);
 
 function hover_ico(e) {
@@ -471,11 +471,11 @@ function updatepassword() {
 }
 
 function loadfriends(offset, withload) {
-
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
         if(this.status==200 && this.readyState==4) {
             var resp = this.responseText;
+            document.querySelector('.right_4 .bottom .loader').style.display = "none";
             try {
                 var json = JSON.parse(resp);
                 document.querySelector('.right_4 .top h1 span').innerHTML = "("+json.count+")";
@@ -486,7 +486,6 @@ function loadfriends(offset, withload) {
                     else {
                         document.querySelector('.right_4 .bottom .main').innerHTML += json.data;
                     }
-                    document.querySelector('.right_4 .spinner_main').style.display = "none";
                 }, 250);
             }
             catch(err) {
@@ -502,6 +501,7 @@ function loadfriends(offset, withload) {
     else {
         formdata.append('offset', offset);
     }
+    formdata.set("friends", localStorage.getItem('friends'));
     xml.open("POST", "./src/load/getfriendfromstorage");
     xml.withCredentials = true;
     xml.send(formdata);
