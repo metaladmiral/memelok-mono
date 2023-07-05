@@ -3,6 +3,15 @@
   --main-border: rgba(0, 0, 0, 0.15);
 }
 
+
+.bgimgoverlay {
+  width: 100%;
+  height: calc(100vh + 100px);
+  background: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  display: none;
+}
+
 body img.mainimg {
   width: 100%;
   height: 100vh;
@@ -174,12 +183,11 @@ body {
   left: 90px;
 }
 .right {
-  background: rgba(0,0,0, 0.40);
+  background: rgba(0,0,0, 0.525);
   border: 1px solid var(--main-border);
   display: flex;
   justify-content: center;
   overflow-x: hidden;
-  overflow-y: hidden;
   box-shadow: 1px gray;
   color: white !important;
 }
@@ -261,9 +269,9 @@ body {
   position: relative;
 }
 .signup {
-  height: 340px;
+  /* height: 340px; */
   max-height: auto;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   left: -500px;
 }
 .scroll {
@@ -705,7 +713,12 @@ body {
 }
 .main {
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top:0px;
 }
 .overlayChkEmail {
   width: 100vw;
@@ -731,13 +744,9 @@ body {
 }
 @media only screen and (min-width: 1236px) {
   .right {
-    position: absolute;
-    top: calc(66px + 80px + 3px);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 410px;
     height: 370px;
+    position: relative;
   }
 }
 @media only screen and (max-width: 1235px) {
@@ -747,28 +756,47 @@ body {
   .right {
     width: 410px;
     height: 370px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     position: relative;
-    margin-bottom: 75px;
   }
   .main {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
   }
 }
 @media only screen and (max-width: 620px) {
   .right {
-    width: calc(95% - 0px);
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
     justify-content: center;
   }
-  .input {
-    width: 240px;
+}
+
+@media only screen and (max-width: 432px) {
+  .right {
+    width: 95vw;
   }
+}
+@media only screen and (max-height: 750px) {
+  .signupright {
+    margin-top: 180px !important;
+  }
+
+  img.mainimg {
+    display: none;
+  }
+
+  body {
+    background-position:center !important;
+    background-image:url(../static-assets/img/background.jpg) !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+  }
+  
+  .bgimgoverlay {
+    display: block;
+  }
+  
 }

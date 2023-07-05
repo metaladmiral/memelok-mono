@@ -151,6 +151,7 @@ function removeFocusInput(inputType) {
 }
 
 function openSignup() {
+    $(".right").addClass('signupright');
     document.querySelector(".top").setAttribute("class", "top slider");
     setTimeout(function() {
         document.querySelector(".top").setAttribute("class", "top");
@@ -165,14 +166,17 @@ function openSignup() {
     });
     document.querySelector(".signup").style.transform = "translate(-50%, 0)";
     $(".right").animate({
-        height: "450px"
+        height: "625px"
     }, "medium");
+    $(".right")[0].style.marginTop = "60px";
     document.querySelector(".top span font").innerHTML = "Login";
     document.querySelector(".top span").setAttribute("onclick", "openSignin()");
     document.querySelector(".top h1").innerHTML = "SIGN UP";
 }
 
 function openSignin() {
+    $(".right").removeClass('signupright');
+    $(".right")[0].style.marginTop = "0px";
     document.querySelector(".top h1").innerHTML = "SIGN IN";
     document.querySelector(".top").setAttribute("class", "top slider");
     setTimeout(function() {

@@ -47,6 +47,7 @@ else {
 <body>
 
 	<img src="static-assets/img/background.jpg" class="mainimg" alt="">
+	<div class="bgimgoverlay"></div>
 
 	<div class="overlayChkEmail">
 	
@@ -313,13 +314,13 @@ else {
 
 					<br>
 
-					<div class="scroll" onclick="scrollup_signup()">
+					<!-- <div class="scroll" onclick="scrollup_signup()">
 						<i class="far fa-chevron-up"></i>
 					</div>	
 
 					<div class="scroll_down" onclick="scrolldown_signup()">
 						<i class="far fa-chevron-down"></i>
-					</div>
+					</div> -->
 
 				</form>
 
