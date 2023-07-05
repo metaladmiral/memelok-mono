@@ -796,10 +796,12 @@ body {
     background-image:url(../static-assets/img/background.jpg) !important;
     background-attachment: fixed !important;
     background-size: cover !important;
+    
   }
   
   .bgimgoverlay {
     display: block;
+    backdrop-filter: blur(3.8px);
   }
   
 }
