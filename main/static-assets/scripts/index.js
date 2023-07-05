@@ -116,7 +116,7 @@ window.addEventListener('keydown', function(e) {
             } 
         }
         var formdata = new FormData();
-        xml.open("POST", "./src/load/pgsugg");
+        xml.open("POST", "/api/getPageSuggestions");
         xml.withCredentials = true;
         xml.send(formdata);
     }
@@ -1169,7 +1169,7 @@ function loadlazychat() {
             document.querySelector("#offonchatspin").style.display = "none";							
         }
     }
-    xml.open("POST", "./src/load/onlinefrnds");
+    xml.open("POST", "/api/getOnlineFriends");
     xml.withCredentials = true;
     xml.send();
 }

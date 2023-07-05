@@ -4,7 +4,7 @@ session_start();
 include '../actions/dbh.php';
 
 class load extends db {
-	public function pgsugg() {
+	public function getPageSuggestions() {
 
 		$db = "usr_".$_SESSION['UID'];
 
@@ -61,4 +61,4 @@ class load extends db {
 }
 
 $obj = new load;
-echo $obj->pgsugg();
+echo $obj->getPageSuggestions();
