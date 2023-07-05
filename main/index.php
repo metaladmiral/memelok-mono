@@ -687,7 +687,7 @@ else {
 					}
 
 				}
-				xml.open("POST", "./api/friendRequest/accept");
+				xml.open("POST", "./api/friendRequests/accept");
 				xml.withCredentials = true;
 				var formdata = new FormData();
 				formdata.append("friendUid", friendUid);
@@ -721,7 +721,7 @@ else {
 
 					}
 				}
-				xml.open("POST", "./api/friendRequest/decline");
+				xml.open("POST", "./api/friendRequests/decline");
 				xml.withCredentials = true;
 				var formdata = new FormData();
 				formdata.append("friendUid", friendUid);
