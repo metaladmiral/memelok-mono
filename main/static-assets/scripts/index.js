@@ -1504,14 +1504,14 @@ function chatanimation() {
         }
         var formdata = new FormData();
         formdata.append("query", val);
-        formdata.append("which", which);
+        formdata.append("searchType", which);
         if(offset==undefined) {
             formdata.append('offset', 0);
         }
         else{
             formdata.append('offset', offset);
         }
-        xml.open("POST", "./src/load/search");
+        xml.open("POST", "./api/search");
         xml.withCredentials = true;
         xml.send(formdata);
     }
