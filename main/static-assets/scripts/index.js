@@ -502,7 +502,7 @@ function loadfriends(offset, withload) {
         formdata.append('offset', offset);
     }
     formdata.set("friends", localStorage.getItem('friends'));
-    xml.open("POST", "./src/load/getfriendfromstorage");
+    xml.open("POST", "/api/userOperations/get-my-friends");
     xml.withCredentials = true;
     xml.send(formdata);
 

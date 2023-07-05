@@ -241,7 +241,6 @@ session_start();
 			
 				<div class="spinner_main loader"></div>
 
-
 			</div>
 
 		</div>
