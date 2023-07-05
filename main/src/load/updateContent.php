@@ -15,10 +15,6 @@ class app extends db  {
 			$query = db::pconnect()->prepare("UPDATE `users` SET `last_activity`='$la' WHERE `uid`='$uid'");
 			$query->execute();
 		}
-		else {
-
-		}
-
 
 		$dbn = "usr_".$uid;
 		$query = db::mconnect($dbn)->prepare("SELECT uid FROM `friends`");
@@ -33,10 +29,10 @@ class app extends db  {
 		$query = db::mconnect($dbn)->prepare("SELECT PID as pid FROM `mypages`");
 		$query->execute();
 
-		$mypagearr = array();
+		$mypagesarr = array();
 
 		while ($row=$query->fetch(PDO::FETCH_ASSOC)) {
-			array_push($mypagearr, $row['pid']);
+			array_push($mypagesarr, $row['pid']);
 		}
 
 
@@ -50,13 +46,13 @@ class app extends db  {
 		}		
 
 		$pagesfollowingarr = json_encode($pagesfollowingarr);
-		$mypagearr = json_encode($mypagearr);
+		$mypagesarr = json_encode($mypagesarr);
 
 		$query = db::mconnect($dbn)->prepare("SELECT * FROM `notifications`");
 		$query->execute();
 		$rows = $query->rowCount();
 
-		$array = array("noti_count"=>$rows, "friends"=>$friends, "mypagearr"=>$mypagearr, "pagesfollowing"=>$pagesfollowingarr);
+		$array = array("noti_count"=>$rows, "friends"=>$friends, "mypagesarr"=>$mypagesarr, "pagesfollowing"=>$pagesfollowingarr);
 		$json = json_encode($array);
 
 		return $json;

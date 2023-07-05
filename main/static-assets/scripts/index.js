@@ -37,13 +37,16 @@ function update_content() {
             if(json.noti_count>json.oldnoticount) {
                 document.querySelector('#ico2 i').classList.add('active');
             }
+            localStorage.setItem('mypagesarr', json.mypagesarr);
+            localStorage.setItem('pagesfollowing', json.pagesfollowing);
+            localStorage.setItem('friends', json.friends);
         }
     }
 
     var state = document.querySelector('.left_divider .top_heading').getAttribute('state');
     var formdata = new FormData();
     formdata.append('state', state);
-    xml.open("POST", "./src/load/update_content");
+    xml.open("POST", "/api/updateContent");
     xml.withCredentials = true;
     xml.send(formdata);
 }
@@ -1481,9 +1484,7 @@ function chatanimation() {
             document.querySelector(".overlay").style.display = "none";
             document.querySelector(".search_resp_dropdown").style.display = "none";
         }
-        catch(err) {
-
-        }
+        catch(err) {}
         var xml = new XMLHttpRequest();
         document.querySelector('.main_search .bottom .spinner').style.display = "block";
         document.querySelector('.main_search .bottom .content').innerHTML = "";
@@ -1503,8 +1504,11 @@ function chatanimation() {
             }
         }
         var formdata = new FormData();
-        formdata.append("query", val);
-        formdata.append("searchType", which);
+        formdata.set("query", val);
+        formdata.set("searchType", which);
+        formdata.set("friends", localStorage.getItem("friends"));
+        formdata.set("mypagesarr", localStorage.getItem("mypagesarr"));
+        formdata.set("pagesfollowing", localStorage.getItem("pagesfollowing"));
         if(offset==undefined) {
             formdata.append('offset', 0);
         }

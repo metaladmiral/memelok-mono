@@ -5,6 +5,7 @@ include './dbh.php';
 
 $uid = $_SESSION['UID'];
 $dbname = "usr_".$_SESSION['UID'];
+
 $query = db::mconnect($dbname)->prepare("SELECT COUNT(*) as count FROM `notifications`");
 $query->execute();
 $fetch = $query->fetch()['count'];

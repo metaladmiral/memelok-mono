@@ -6,3 +6,9 @@
 /image-alteration-server/venv
 /main/todo.txt
 /main/update.txt
+
+/main/todoMLH.txt
+main/static-assets/img/background.avif
+main/static-assets/img/background.webp
+main/static-assets/img/icon-main.png
+./.gitignore

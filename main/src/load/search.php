@@ -11,11 +11,11 @@ class search extends db {
 		$val = $_POST['query'];
 		$html = "";
 
-		if(is_null($_SESSION['friends']) OR empty($_SESSION['friends']) OR strtolower($_SESSION['friends'])=='null') {
+		if(is_null($_POST['friends']) OR empty($_POST['friends']) OR strtolower($_POST['friends'])=='null') {
 			$mfriends = array();
 		}
 		else {
-			$mfriends = json_decode($_SESSION['friends'], true);
+			$mfriends = json_decode($_POST['friends'], true);
 		}
 
 		$offset = $_POST['offset'];
@@ -138,6 +138,8 @@ class search extends db {
 
 	public function searchPages() {
 		
+		$val = $_POST['query'];
+
 		$offset = $_POST['offset'];
 		$limit = $offset+10;
 
@@ -166,13 +168,13 @@ class search extends db {
 
 			while ($row=$query->fetch(PDO::FETCH_ASSOC)) {
 		
-			$pid = $row['pid'];
-			$pic = $row['pic'];
-			$page_name = $row['page_name'];
-			$followers_count = $row['followers'];
-			$social = json_decode($row['social'], true);
+				$pid = $row['pid'];
+				$pic = $row['pic'];
+				$page_name = $row['page_name'];
+				$followers_count = $row['followers'];
+				$social = json_decode($row['social'], true);
 
-			$id = uniqid().rand(0, 99999);
+				$id = uniqid().rand(0, 99999);
 
 			?>
 			

@@ -21,6 +21,7 @@ RewriteRule ^api/userAuth/([^/]+)$ /src/actions/userAuth.php?action=$1 [QSA,L]
 RewriteRule ^api/user/inituser /src/actions/inituser.php [L]
 RewriteRule ^api/generate-otp /src/actions/generate-otp.php [L]
 RewriteRule ^api/search /src/load/search.php [L]
+RewriteRule ^api/updateContent /src/load/updateContent.php [L]
 
 RewriteRule ^login$ /getin [R=301,L]
 
