@@ -962,6 +962,7 @@ function download_post(pgname, imagelink) {
                 if(this.readyState==4 && this.status==200) {
                     document.querySelector('.downloadmeme').setAttribute('href', '../../data/img_watermarked/');
                     document.querySelector('.downloadmeme').setAttribute('download', imagelink);
+                    document.querySelector('.downloadmeme').click();
                 }
             }
             xhr.open("GET", "http://localhost:5000/labelimage?pname="+pgname+"&imlink="+imagelink);
