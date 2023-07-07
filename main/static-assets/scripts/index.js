@@ -965,7 +965,7 @@ function download_post(pgname, imagelink) {
                     document.querySelector('.downloadmeme').click();
                 }
             }
-            xhr.open("GET", "http://localhost:5000/labelimage?pname="+pgname+"&imlink="+imagelink);
+            xhr.open("GET", "../../labelimage?pname="+pgname+"&imlink="+imagelink);
             xhr.send();
         }
         else if(this.readyState==4 && this.status==200){

@@ -2,30 +2,29 @@ from flask import Flask, request
 from flask import Response
 from PIL import Image, ImageDraw, ImageFont
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/labelimage')
 def labelimage():
-	print(os.path())
-	return Response(headers={'Access-Control-Allow-Origin':'*'}, response="asd"+os.getcwd)
-
-	return
+	
 	pname = request.args.get('pname')
 	imlink = request.args.get('imlink')
 
-	text="www.mainlok.com/page/"+pname
+	text="www.memelok.com/page/"+pname
 	image = Image.open('../main/data/post_img/'+imlink)
 	W, H = image.size
 
 	draw = ImageDraw.Draw(image)
-	font = ImageFont.truetype('/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', 20)
+	font = ImageFont.truetype('../main/static-assets/fonts/Roboto-Bold.ttf', 22)
 	w, h = draw.textsize(text, font=font)
 
 	rw = (W-w)/2
 	rh = (H-h)/2
 
-	draw.text(xy=(rw, rh), text=text, font=font, fill=(255, 255, 255), align="right")
+	draw.text(xy=(rw, rh), text=text, font=font, fill=(0, 0, 0), align="right")
 
 	image.save("../main/data/img_watermarked/"+imlink)
 	
@@ -34,7 +33,6 @@ def labelimage():
 
 @app.route('/optimizememe')
 def optimizeimage():
-	print("In here")
 	imlink = request.args.get('imlink')
 	imbig = request.args.get('imbig')
 	imsmall = request.args.get('imsmall')
