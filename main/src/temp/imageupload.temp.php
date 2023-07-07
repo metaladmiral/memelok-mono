@@ -1,5 +1,8 @@
 <?php
 
+include '../actions/define.php';
+
+
 if(isset($_FILES["file"])) {
 	$file = $_FILES["file"];
 	$type = mime_content_type($file["tmp_name"]);
@@ -11,7 +14,7 @@ if(isset($_FILES["file"])) {
 		$random_name = uniqid($prefix, true).".".$ext;
 
 		try {
-			move_uploaded_file($file["tmp_name"], "/opt/lampp/htdocs/data/temp_uploads/$random_name");
+			move_uploaded_file($file["tmp_name"], $GLOBALS['dataPath']."/temp_uploads/$random_name");
 			echo $random_name;
 		}
 		catch(\Exception $e) {

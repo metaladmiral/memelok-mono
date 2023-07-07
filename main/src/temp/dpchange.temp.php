@@ -12,12 +12,12 @@ if(isset($_FILES["file"])) {
 
 	if($type=='image/jpeg' OR $type=='image/jpg' OR $type=='image/png') {
 		
-		$ext = explode('/', $type)[1];
+		$ext = explode('/', $type)[3];
 		$prefix = strlen($file['name']).strlen((string)$file['size']).rand(11, 500);
 		$random_name = uniqid($prefix, true).".".$ext;
 
 		try {
-			move_uploaded_file($file["tmp_name"], "/opt/lampp/htdocs/data/img_users/$random_name");
+			move_uploaded_file($file["tmp_name"], $GLOBALS['dataPath']."/img_users/$random_name");
 
 			$uid = $_SESSION['UID'];
 

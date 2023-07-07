@@ -267,7 +267,7 @@ function dp_change() {
         }
         var formdata = new FormData();
         formdata.append("file", dom);
-        xml.open("POST", "./src/temp/dpchange.temp");
+        xml.open("POST", "api/upload/temp/change-dp");
         xml.withCredentials = true;
         xml.send(formdata);
     }
@@ -572,7 +572,7 @@ function upload_temp_page_dp() {
         }
         var formdata = new FormData();
         formdata.append("file", dom);
-        xml.open("POST", "./src/temp/imageupload.temp");
+        xml.open("POST", "api/upload/temp/image");
         xml.withCredentials = true;
         xml.send(formdata);
     }
@@ -778,7 +778,7 @@ function dp_change_page() {
         }
         var formdata = new FormData();
         formdata.append("file", dom);
-        xml.open("POST", "./src/temp/dpchangepage.temp");
+        xml.open("POST", "api/upload/temp/image");
         xml.withCredentials = true;
         xml.send(formdata);
     }
@@ -854,7 +854,7 @@ function uploadmemeimage() {
         }
         var formdata = new FormData();
         formdata.append("file", dom);
-        xml.open("POST", "./src/temp/memeimageupload.temp");
+        xml.open("POST", "api/upload/temp/image");
         xml.withCredentials = true;
         xml.send(formdata);
     }

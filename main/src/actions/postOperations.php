@@ -14,7 +14,7 @@ class postOperations extends db {
         $tags = (sizeof($tags)) ? json_encode($tags) : "random";
 
 		$pid = $_POST['which'];
-		$img = explode('/', $_POST['img'])[1];
+		$img = explode('/', $_POST['img'])[3];
 
 		$img_big = "big_".$img;
 		$img_small = "small_".$img;
@@ -43,7 +43,7 @@ class postOperations extends db {
 
 		try {
 
-			copy("../../data/temp_uploads/".$img, "../../data/post_img/".$img);	
+			copy($GLOBALS['dataPath']."/temp_uploads/".$img, $GLOBALS['dataPath']."/post_img/".$img);	
 
 			$ch = curl_init();
 

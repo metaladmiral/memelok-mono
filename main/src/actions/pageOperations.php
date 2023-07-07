@@ -228,7 +228,7 @@ class pageOperations extends db {
         $uid = $_SESSION['UID'];
 
         try {
-            $newPhoto = explode('/', $newPhoto)[1];
+            $newPhoto = explode('/', $newPhoto)[3];
             copy("../../data/temp_uploads/$newPhoto", "../../data/img_pages/$newPhoto");
         } catch (\Exception $e) {
             $newPhoto = $_POST['photo'];
