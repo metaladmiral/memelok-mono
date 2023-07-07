@@ -506,7 +506,7 @@ else {
 							}
 						}
 					}
-					xml.open("POST", "./src/usrncheck");
+					xml.open("POST", "/api/userAuth/check-username");
 					xml.withCredentials = true;
 					var formdata = new FormData();
 					formdata.append("value", val);

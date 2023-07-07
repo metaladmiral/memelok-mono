@@ -5,6 +5,34 @@ include 'dbh.php';
 
 class userAuth extends db {
 
+	public function checkUserameExistence($username) {
+		$val = $_POST['value'];
+		$val = stripslashes(strip_tags($val));
+
+		if(preg_match("/[!@^%\$()=?;+#\/*\[\]\{\}<>|,' -\"]/", $val)) {
+			echo '0';
+		}	
+		else {
+
+		try {
+			$query = db::pconnect()->prepare("SELECT * FROM `users` WHERE `username`='$val'");
+			$query->execute();
+
+			if($query->rowCount()>0) {
+				echo '0';
+			}
+			else {
+				echo '1';
+			}
+
+		}
+		catch(\Exception $e) {
+			echo $e->getMessage();
+		}
+
+		}
+	}
+
     private function checkUserExistence($email) {
 
 		$query = db::pconnect()->prepare("SELECT * FROM `users` WHERE `email`='$email'");
@@ -249,6 +277,9 @@ if(isset($_GET['action']) && !empty($_GET['action'])) {
     else if($act=='signup') {
         echo $obj->signup(); 
     }
+	else if($act=='check-username') {
+		echo $obj->checkUserameExistence(); 
+	}
     else {
         header('Location: ../../notfound.html');
     }
