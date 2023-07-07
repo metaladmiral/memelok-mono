@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-include '../actions/dbh.php';
+include './dbh.php';
 
 class chat extends db {
 	public function loadchats($uid_f, $uid_m) {
