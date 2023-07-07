@@ -502,7 +502,7 @@ else {
 								document.querySelector('.right_1 #usrnnavl').style.display = "block";
 								document.querySelector('.right_1 .username input').setAttribute('toupdate', '0');
 								alertmain(resp);
-								console.log(resp);
+								
 							}
 						}
 					}
@@ -680,7 +680,7 @@ else {
 					}
 					else {
 						alertmain('An error Occured!');
-						console.log(resp);
+						
 					}
 
 					}
@@ -715,7 +715,7 @@ else {
 						}
 						else {
 							alertmain('An Error Occured!');
-							console.log(resp);
+							
 						}
 
 					}

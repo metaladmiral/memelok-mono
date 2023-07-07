@@ -71,7 +71,7 @@ function usrncheck() {
                     document.querySelector("#signup_btn").setAttribute("disabled", "true");
                     document.querySelector("#signup_btn").style.cursor = "auto";
                     customAlert(resp);
-                    console.log(resp);
+                    
                 }
             }
         }
@@ -203,7 +203,6 @@ function signupInputFocus(inputType) {
         document.querySelector("." + inputType + " .highlighter").style.background = "var(--hover-color)";
         document.querySelector(".right .top").style.borderBottom = "2px solid var(--hover-color)";
     } catch (error) {
-        console.log(error);
     }
 
     if (["email", "password"].includes(inputType)) {
@@ -294,7 +293,6 @@ function signupFormSubmit() {
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState === 4 && xhr.status === 200) {
                             var response = xhr.responseText;
-                            console.log(response);
                             setTimeout(function() {
                                 document.querySelector(".right .top .spinner").style.display = "none";
                                 if (response === "1") {
@@ -347,7 +345,6 @@ function signinFormSubmit() {
             var response = xhr.responseText;
             setTimeout(function() {
                 document.querySelector(".right .top .spinner").style.display = "none";
-                console.log(response);
                 if (response === "1") {
                     window.location = "./api/user/inituser";
                 } else {

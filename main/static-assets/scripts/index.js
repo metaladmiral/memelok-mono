@@ -411,7 +411,7 @@ function updatesocial() {
                 }, 500);
             }
             else {
-                console.log(resp);
+                
             }
         }
     }
@@ -528,7 +528,7 @@ function unfriendUser(friendUid, id) {
             else {
                 spinner.style.display = "none";
                 alertmain('An error Occured!');
-                console.log(resp);
+                
             }
 
         }
@@ -641,7 +641,7 @@ function createpage() {
                         alertmain("Your Page has been created.");
                     }
                     else {
-                        console.log(resp);
+                        
                         alertmain("Server Error! Please Try again later.");
                     }
                 }, 700);						
@@ -909,7 +909,7 @@ function uploadmeme() {
                 }
                 else {
                     alertmain("Server Error! Please Try again Later.");
-                    console.log(resp);
+                    
                 }
 
                 document.querySelector('.overlay').innerHTML = "";
@@ -1119,7 +1119,7 @@ function reacttopost(which, mid, domid) {
 
             }
             else {
-                console.log(resp);
+                
                 alertmain("Couldn't react to the post");
             }
         }
@@ -1559,7 +1559,7 @@ function chatanimation() {
                         document.querySelector('#spb_'+domid+' .send_req #friend_req_sent').style.display = "block";
                     }
                     else {
-                        console.log(resp);
+                        
                     }
 
                 },50);

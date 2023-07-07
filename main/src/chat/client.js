@@ -35,8 +35,6 @@ socket.on("private-chat-recv", function (data) {
     document.querySelector(".right_more_ i").setAttribute("id", "active");
   }
 
-  console.log(chatwindowcheck + " " + uidm);
-
   var message_noti = document.getElementById("message_noti");
   message_noti.play();
 
