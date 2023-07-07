@@ -137,7 +137,7 @@ class notifications extends db {
 				$link = $res['link'];
 				$id = uniqid('').rand(0, 9900);
 
-				$mtime = app::getTime($time);
+				$mtime = notifications::getTime($time);
 				
 				if($read==0) {
 					
