@@ -14,8 +14,8 @@ def labelimage():
 	pname = request.args.get('pname')
 	imlink = request.args.get('imlink')
 
-	text="www.memelok.com/page/"+pname
-	image = Image.open('../meme/data/post_img/'+imlink)
+	text="www.mainlok.com/page/"+pname
+	image = Image.open('../main/data/post_img/'+imlink)
 	W, H = image.size
 
 	draw = ImageDraw.Draw(image)
@@ -27,18 +27,19 @@ def labelimage():
 
 	draw.text(xy=(rw, rh), text=text, font=font, fill=(255, 255, 255), align="right")
 
-	image.save("../meme/data/img_watermarked/"+imlink)
+	image.save("../main/data/img_watermarked/"+imlink)
 	
 	return Response(headers={'Access-Control-Allow-Origin':'*'}, response=imlink)
 
 
 @app.route('/optimizememe')
 def optimizeimage():
+	print("In here")
 	imlink = request.args.get('imlink')
 	imbig = request.args.get('imbig')
 	imsmall = request.args.get('imsmall')
 
-	img = Image.open('../meme/data/post_img/'+imlink)
+	img = Image.open('../main/data/post_img/'+imlink)
 	W, H = img.size
 
 	# for big --------
@@ -58,10 +59,10 @@ def optimizeimage():
 	# ----------------
 
 	img_big = img.resize((w_big, h_big), Image.ANTIALIAS)
-	img_big.save("../meme/data/post_img/"+imbig)
+	img_big.save("../main/data/post_img/"+imbig)
 
 	img_small = img.resize((w_small, h_small), Image.ANTIALIAS)
-	img_small.save("../meme/data/post_img/"+imsmall)	
+	img_small.save("../main/data/post_img/"+imsmall)	
 
 	return Response(headers={'Access-Control-Allow-Origin':'*'}, response="optimize")
 
@@ -70,7 +71,7 @@ def optimize_userdp():
 	imlink = request.args.get('imlink')
 	rname = request.args.get('rname')
 
-	img = Image.open('../meme/data/img_users/'+imlink)
+	img = Image.open('../main/data/img_users/'+imlink)
 	W, H = img.size
 
 	# for big --------
@@ -80,9 +81,9 @@ def optimize_userdp():
 	h = round(H/ratio)
 
 	img = img.resize((w,h), Image.ANTIALIAS)
-	img.save("../meme/data/img_users/"+rname)
+	img.save("../main/data/img_users/"+rname)
 
-	os.remove("../meme/data/img_users/"+imlink)
+	os.remove("../main/data/img_users/"+imlink)
 
 	return Response(headers={'Access-Control-Allow-Origin':'*'}, response="optimize")
 
@@ -92,7 +93,7 @@ def optimize_pagedp():
 	imlink = request.args.get('imlink')
 	rname = request.args.get('rname')
 
-	img = Image.open('../meme/data/img_pages/'+imlink)
+	img = Image.open('../main/data/img_pages/'+imlink)
 	W, H = img.size
 
 	# for big --------
@@ -102,9 +103,9 @@ def optimize_pagedp():
 	h = round(H/ratio)
 
 	img = img.resize((w,h), Image.ANTIALIAS)
-	img.save("../meme/data/img_pages/"+rname)
+	img.save("../main/data/img_pages/"+rname)
 
-	os.remove("../meme/data/img_pages/"+imlink)
+	os.remove("../main/data/img_pages/"+imlink)
 
 	return Response(headers={'Access-Control-Allow-Origin':'*'}, response="optimize")
 
