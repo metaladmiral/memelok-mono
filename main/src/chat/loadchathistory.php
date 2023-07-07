@@ -31,6 +31,7 @@ class chat extends db {
 				$uid = $row['uid'];
 				$db = $row['db'];
 				$last_message = $row['last_message'];
+				if(strlen($last_message)>20) { $last_message = substr($row['last_message'], 0, 20)." ..."; }
 				$last_read = $row['last_read'];
 				$dp = $row['pic'];
 				$username = $row['username'];
@@ -90,6 +91,7 @@ class chat extends db {
 			$uid = $row['uid'];
 			$db = $row['db'];
 			$last_message = $row['last_message'];
+			if(strlen($last_message)>20) { $last_message = substr($row['last_message'], 0, 20)." ..."; }
 			$last_read = $row['last_read'];
 			$dp = $row['pic'];
 			$username = $row['username'];

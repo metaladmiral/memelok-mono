@@ -12,3 +12,4 @@ main/static-assets/img/background.avif
 main/static-assets/img/background.webp
 main/static-assets/img/icon-main.png
 ./.gitignore
+*_ignore*
