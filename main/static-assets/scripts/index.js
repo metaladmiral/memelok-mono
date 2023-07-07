@@ -942,7 +942,7 @@ function uploadmeme() {
     if(caption) {
         formdata.append('caption', caption);
     }
-    xml.open("POST", "./src/actions/uploadmeme");
+    xml.open("POST", "/api/postOperations/upload-post");
     xml.withCredentials = true;
     xml.send(formdata);
 
@@ -1126,8 +1126,8 @@ function reacttopost(which, mid, domid) {
     }
     var formdata = new FormData();
     formdata.append("mid", mid);
-    formdata.append("which", which);
-    xml.open("POST", "./src/actions/reacttopost");
+    formdata.append("reacttype", which);
+    xml.open("POST", "/api/postOperations/react-to-post");
     xml.withCredentials = true;
     xml.send(formdata);
 }

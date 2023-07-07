@@ -3,23 +3,15 @@
 session_start();
 include 'dbh.php';
 
-class upload extends db {
-	public function act() {
-		if(isset($_POST['caption'])) {
-			$caption = stripslashes(strip_tags($_POST['caption']));
-		}
-		else {
-			$caption = null;
-		}
+class postOperations extends db {
+
+    public function uploadMeme() {
+		
+        $caption = (isset($_POST['caption'])) ? stripslashes(strip_tags($_POST['caption'])) : $caption = null;
 
 		$tags = json_decode($_POST['tags'], true);
 
-		if(sizeof($tags)==0) {
-			$tags = "random";
-		}
-		else {
-			$tags = json_encode($tags);
-		}
+        $tags = (sizeof($tags)) ? json_encode($tags) : "random";
 
 		$pid = $_POST['which'];
 		$img = explode('/', $_POST['img'])[1];
@@ -93,8 +85,76 @@ class upload extends db {
 			return $e->getMessage();
 		}
 
-	}	
+	}
+
+    public function reactLike() {
+		try {
+			
+			$mid = $_POST['mid'];
+			$db = "usr_".$_SESSION['UID'];
+			$query = db::mconnect($db)->prepare("INSERT INTO `likes`(mid) VALUES('$mid')");
+			$query->execute();
+
+			$query = db::postsconnect()->prepare("SELECT like_count as lc FROM `meme` WHERE `mid`='$mid'");
+			$query->execute();
+			$lc = (int)$query->fetch(PDO::FETCH_ASSOC)['lc']+1;
+
+			$query = db::postsconnect()->prepare("UPDATE `meme` SET like_count='$lc' WHERE `mid`='$mid'");
+			$query->execute();
+
+			return 1;
+
+		}catch(\Exception $e) {
+			return $e->getMessage();
+		}
+
+	}
+
+	public function reactDislike() {
+		try {
+			$mid = $_POST['mid'];
+			$db = "usr_".$_SESSION['UID'];
+			$query = db::mconnect($db)->prepare("INSERT INTO `likes`(mid) VALUES('$mid')");
+			$query->execute();
+
+			$query = db::postsconnect()->prepare("SELECT dislike_count as lc FROM `meme` WHERE `mid`='$mid'");
+			$query->execute();
+			$lc = (int)$query->fetch(PDO::FETCH_ASSOC)['lc']+1;
+
+			$query = db::postsconnect()->prepare("UPDATE `meme` SET dislike_count='$lc' WHERE `mid`='$mid'");
+			$query->execute();
+			
+			return 1;
+
+		}
+		catch(\Exception $e) {
+			return $e->getMessage();
+		}
+	}
+
 }
 
-$obj = new upload;
-echo $obj->act();
+$obj = new postOperations;
+
+if(isset($_GET['action']) && !empty($_GET['action'])) {
+    
+    $act = $_GET['action'];
+    if($act=='react-to-post') {
+        if($_POST['reacttype']=='positive') {
+
+            echo $obj->reactLike(); 
+        }
+        else {
+            echo $obj->reactDislike(); 
+        }
+    } 
+    else if($act=='upload-post') {
+        echo $obj->uploadMeme(); 
+    }
+    else {
+        header('Location: ../../notfound.html');
+    }
+
+} else {
+    header('Location: ../../notfound.html');
+}

@@ -17,6 +17,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^api/friendRequests/([^/]+)$ /src/actions/friendRequests.php?action=$1 [QSA,L]
 RewriteRule ^api/pageOperations/([^/]+)$ /src/actions/pageOperations.php?action=$1 [QSA,L]
 RewriteRule ^api/userOperations/([^/]+)$ /src/actions/userOperations.php?action=$1 [QSA,L]
+RewriteRule ^api/postOperations/([^/]+)$ /src/actions/postOperations.php?action=$1 [QSA,L]
 RewriteRule ^api/userAuth/([^/]+)$ /src/actions/userAuth.php?action=$1 [QSA,L]
 RewriteRule ^api/user/inituser /src/actions/inituser.php [L]
 RewriteRule ^api/generate-otp /src/actions/generate-otp.php [L]
