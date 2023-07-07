@@ -121,9 +121,7 @@ class load extends db {
 
 	}
 
-	public function show_remaining() {}
-
-	public function followingWposts($limit, $offset, $datebefore) {
+	public function pagesFollowingPosts($limit, $offset, $datebefore) {
 
 		$mdb = "usr_".$_SESSION['UID'];
 
@@ -168,7 +166,7 @@ class load extends db {
 
 	}
 
-	public function intWposts($limit, $offset, $datebefore) {
+	public function interestPosts($limit, $offset, $datebefore) {
 		$mdb = "usr_".$_SESSION['UID'];
 
 		if($this->int!='random') {
@@ -217,7 +215,7 @@ class load extends db {
 
 	}
 
-	public function randWposts($limit, $offset, $datebefore) {
+	public function randomPosts($limit, $offset, $datebefore) {
 
 		$mdb = "usr_".$_SESSION['UID'];
 		
@@ -285,11 +283,11 @@ class load extends db {
 			}
 
 			if($rand==1) {
-				$ret = self::followingWposts($f_data["limit"], $f_data["offset"], $f_data["datebefore"]);
+				$ret = self::pagesFollowingPosts($f_data["limit"], $f_data["offset"], $f_data["datebefore"]);
 				if($ret==0) {
 					$f_data["do"] = 0;
 					array_push($this->not, 1);
-					$ret = self::randWposts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+20);				
+					$ret = self::randomPosts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+20);				
 					if($ret!=0) {
 						$t_data["limit"] = $t_data["limit"]+8;
 						$t_data["offset"] = $t_data["offset"]+8; 
@@ -308,12 +306,12 @@ class load extends db {
 			}
 			else if($rand==2) {
 				
-				$ret = self::intWposts($s_data["limit"], $s_data["offset"], $s_data["datebefore"]);
+				$ret = self::interestPosts($s_data["limit"], $s_data["offset"], $s_data["datebefore"]);
 				if($ret==0) {
 					
 					$s_data["do"] = 0;
 					array_push($this->not, 2);
-					$ret = self::randWposts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+20);
+					$ret = self::randomPosts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+20);
 					if($ret!=0) {
 						$t_data["limit"] = $t_data["limit"]+8;
 						$t_data["offset"] = $t_data["offset"]+8; 
@@ -331,10 +329,10 @@ class load extends db {
 				}
 			}
 			else if($rand==3){
-				$ret = self::randWposts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]);
+				$ret = self::randomPosts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]);
 				if($ret==0) {
 					
-					$ret = self::randWposts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+10);
+					$ret = self::randomPosts($t_data["limit"], $t_data["offset"], $t_data["datebefore"]+10);
 					if($ret==0) {
 						echo 0;
 					}

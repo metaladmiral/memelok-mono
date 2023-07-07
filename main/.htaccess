@@ -24,6 +24,7 @@ RewriteRule ^api/search /src/load/search.php [L]
 RewriteRule ^api/updateContent /src/load/updateContent.php [L]
 RewriteRule ^api/getOnlineFriends /src/load/getOnlineFriends.php [L]
 RewriteRule ^api/getPageSuggestions /src/load/getPageSuggestions.php [L]
+RewriteRule ^api/loadPosts /src/actions/loadPosts.php [L]
 
 RewriteRule ^login$ /getin [R=301,L]
 

@@ -1727,7 +1727,7 @@ function chatanimation() {
 
             }
         }
-        xml.open("POST", "../../src/load/loadposts");
+        xml.open("POST", "/api/loadPosts");
         xml.withCredentials = true;
         var formdata = new FormData();
         formdata.append('px', window.innerWidth+"x"+window.innerHeight);
