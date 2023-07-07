@@ -5,7 +5,7 @@ Memelok is a social media website designed exclusively for memers. It offers a u
 # Features
 * Full Copyright Ownership : Memelok ensures that you, as a memer, retain full copyright ownership of the memes you create. This allows you to protect your work and have control over its usage.
 
-* Real-time Chat: ## Stay connected with your friends and fellow memers through real-time chat. Engage in conversations, share memes, and collaborate on projects in a seamless and interactive environment.
+* Real-time Chat: Stay connected with your friends and fellow memers through real-time chat. Engage in conversations, share memes, and collaborate on projects in a seamless and interactive environment.
 
 * Personalized Recommendations: Memelok provides personalized recommendations based on your interests and preferences. Discover new memes, trends, and memers that align with your tastes, ensuring an engaging and tailored experience.
 
