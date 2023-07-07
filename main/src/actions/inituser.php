@@ -6,7 +6,9 @@ include './dbh.php';
 $uid = $_SESSION['UID'];
 $dbname = "usr_".$_SESSION['UID'];
 
-$query = db::mconnect($dbname)->prepare("SELECT COUNT(*) as count FROM `notifications`");
+$db = new Db;
+
+$query = $db->mconnect($dbname)->prepare("SELECT COUNT(*) as count FROM `notifications`");
 $query->execute();
 $fetch = $query->fetch()['count'];
 
@@ -14,7 +16,7 @@ $server = $_SERVER['SERVER_NAME'];
 
 /* ------------- */ 
 
-$query = db::mconnect($dbname)->prepare("SELECT pid as pid FROM `pagesfollowing`");
+$query = $db->mconnect($dbname)->prepare("SELECT pid as pid FROM `pagesfollowing`");
 $query->execute();
 
 $pagesfollowingarr = array();
@@ -27,7 +29,7 @@ $pagesfollowingarr = json_encode($pagesfollowingarr);
 $_SESSION['pagesfollowingarr'] = $pagesfollowingarr;
 /* ------------ */
 
-$query = db::mconnect($dbname)->prepare("SELECT PID as pid FROM `mypages`");
+$query = $db->mconnect($dbname)->prepare("SELECT PID as pid FROM `mypages`");
 $query->execute();
 
 $mypagesarr = array();
@@ -47,7 +49,7 @@ $_SESSION['mypagesarr'] = $mypagesarr;
 
 $sessid = $_COOKIE['PSID'];
 
-$upquery = db::pconnect()->prepare("UPDATE `users` SET `sessid`='$sessid' WHERE `uid`='$uid'");
+$upquery = $db->pconnect()->prepare("UPDATE `users` SET `sessid`='$sessid' WHERE `uid`='$uid'");
 $upquery->execute();
 
 ?>

@@ -1,8 +1,16 @@
 <?php
 
 date_default_timezone_set("Asia/Kolkata");
+include './define.php';
 
 class db {
+
+	protected $dbUser, $dbPass;
+
+	public function __construct() {
+		$this->dbUser = $GLOBALS['dbUser'];
+		$this->dbPass = $GLOBALS['dbPass'];
+	}
 
 	public function pconnect() {
 		
@@ -14,7 +22,7 @@ class db {
 		}
 
 		try {
-			$pdo = new PDO("mysql:host=localhost;dbname=people", "root", "");
+			$pdo = new PDO("mysql:host=localhost;dbname=people", $this->dbUser, $this->dbPass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $pdo;
@@ -34,7 +42,7 @@ class db {
 		}
 
 		try {
-			$pdo = new PDO("mysql:host=localhost;dbname=$db", "root", "");
+			$pdo = new PDO("mysql:host=localhost;dbname=$db", $this->dbUser, $this->dbPass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $pdo;
@@ -55,7 +63,7 @@ class db {
 		}
 
 		try {
-			$pdo = new PDO("mysql:host=localhost", "root", "");
+			$pdo = new PDO("mysql:host=localhost", $this->dbUser, $this->dbPass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $pdo;
@@ -67,7 +75,7 @@ class db {
 
 	public function pageconnect() {
 		try {
-			$pdo = new PDO("mysql:host=localhost;dbname=pages", "root", "");
+			$pdo = new PDO("mysql:host=localhost;dbname=pages", $this->dbUser, $this->dbPass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $pdo;
@@ -79,7 +87,7 @@ class db {
 
 	public function postsconnect() {
 		try {
-			$pdo = new PDO("mysql:host=localhost;dbname=posts", "root", "");
+			$pdo = new PDO("mysql:host=localhost;dbname=posts", $this->dbUser, $this->dbPass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return $pdo;
