@@ -1,6 +1,6 @@
 <?php
 
-include 'src/actions/dbh.php';
+include './dbh.php';
 
 session_start();
 ob_start();

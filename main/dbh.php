@@ -1,7 +1,7 @@
 <?php
 
 date_default_timezone_set("Asia/Kolkata");
-include './define.php';
+include './src/actions/define.php';
 
 class db {
 

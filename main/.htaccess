@@ -26,6 +26,8 @@ RewriteRule ^api/search /src/actions/search.php [L]
 RewriteRule ^api/getOnlineFriends /src/actions/getOnlineFriends.php [L]
 RewriteRule ^api/getPageSuggestions /src/actions/getPageSuggestions.php [L]
 RewriteRule ^api/loadPosts /src/actions/loadPosts.php [L]
+RewriteRule ^api/upload/temp/change-dp /src/temp/dpChange.temp.php [L]
+RewriteRule ^api/upload/temp/image /src/temp/imageUpload.temp.php [L]
 
 RewriteRule ^login$ /getin [R=301,L]
 
