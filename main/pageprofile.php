@@ -105,8 +105,10 @@ else {
 </head>
 <body>
 	
-	<div class="nav_main">
-		<center><h1>LOGO</h1></center>
+	<div class="nav_main" style='display: flex;align-items:center;justify-content:center;'>
+		<center>
+			<img src="../static-assets/img/logo_dev1.png" alt="">
+		</center>
 	</div>	
 
 	<div class="alert_main">
