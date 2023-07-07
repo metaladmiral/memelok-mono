@@ -2,7 +2,7 @@
 
 $imageServerUrl = "";
 $chatServerUrl = "";
-$dbUser = "root";
+$dbUser = "";
 $dbPass = "";
 
 ?>
