@@ -960,7 +960,7 @@ function download_post(pgname, imagelink) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if(this.readyState==4 && this.status==200) {
-                    document.querySelector('.downloadmeme').setAttribute('href', '../../data/img_watermarked/');
+                    document.querySelector('.downloadmeme').setAttribute('href', '../../data/img_watermarked/'+imagelink);
                     document.querySelector('.downloadmeme').setAttribute('download', imagelink);
                     document.querySelector('.downloadmeme').click();
                 }
