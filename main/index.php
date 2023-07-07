@@ -672,9 +672,8 @@ else {
 						var formdata = new FormData();
 						var content = "<?php echo $_SESSION['username']; ?>"+" accepted your friend request.";
 						formdata.append("key", friendUid);
-						formdata.append("which", "sendnoti");
 						formdata.append("content", content);
-						xml_req.open("POST", "./src/load/notifications");
+						xml_req.open("POST", "/api/notifications/send-notifications");
 						xml_req.withCredentials = true;
 						xml_req.send(formdata);
 						

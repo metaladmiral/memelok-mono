@@ -1664,10 +1664,9 @@ function chatanimation() {
                 }, 250);
             }
         }
-        xml.open("POST", "../../src/load/notifications");
+        xml.open("POST", "/api/notifications/get-notifications");
         xml.withCredentials = true;
         var formdata = new FormData();
-        formdata.append("which", "getnoti");
         if(offset==undefined) {
             offset = 0;
         }

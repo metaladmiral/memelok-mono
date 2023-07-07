@@ -3,9 +3,9 @@
 session_start();
 include '../actions/dbh.php';
 
-class app extends db {
+class notifications extends db {
 
-	public function gettime($fulltime) {
+	public function getTime($fulltime) {
 
 		$mtime = "";
 		$fulltime = explode('/', $fulltime);
@@ -105,7 +105,7 @@ class app extends db {
 
 	}
 
-	public function getnoti($offset, $limit, $total) {
+	public function getNotifications($offset, $limit, $total) {
 
 		$uid = $_SESSION['UID'];
 
@@ -137,7 +137,7 @@ class app extends db {
 				$link = $res['link'];
 				$id = uniqid('').rand(0, 9900);
 
-				$mtime = app::gettime($time);
+				$mtime = app::getTime($time);
 				
 				if($read==0) {
 					
@@ -227,7 +227,7 @@ class app extends db {
 	
 	}
 
-	public function sendnoti($key, $content) {
+	public function sendNotifications($key, $content) {
 		$uid_f = $key;
 
 		$dbname = "usr_".$uid_f;
@@ -256,12 +256,36 @@ class app extends db {
 
 	}
 
+	public function markAllRead() {
+
+		$dbname = "usr_".$_SESSION['UID'];
+		try {
+			$query = db::mconnect($dbname)->prepare("UPDATE `notifications` SET read='1'");
+			$query->execute();
+			return 1;
+		}
+		catch(PDOException $e) {
+			return $e->getMessage();
+		}
+	}
+
 }
 
-$app = new app;
-if($_POST['which']=='getnoti') {
-	echo $app->getnoti($_POST['offset'], $_POST['limit'], $_POST['total']);
+$obj = new notifications;
+
+if(isset($_GET['action']) && !empty($_GET['action'])) {
+    $act = $_GET['action'];
+	if($act=='markallread') {
+		echo $obj->markAllRead($_POST['offset'], $_POST['limit'], $_POST['total']);
+	}else if($act=='get-notifications') {
+		echo $obj->getNotifications($_POST['offset'], $_POST['limit'], $_POST['total']);
+	}else if($act=='send-notifications') {
+		echo $obj->sendNotifications($_POST['key'], $_POST['content']);
+	}
+	else {
+        header('Location: ../../notfound.html');
+	}
 }
-else if($_POST['which']=='sendnoti') {
-	echo $app->sendnoti($_POST['key'], $_POST['content']);
+else {
+	header('Location: ../../notfound.html');
 }
