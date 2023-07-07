@@ -960,21 +960,20 @@ function download_post(pgname, imagelink) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if(this.readyState==4 && this.status==200) {
-                    document.querySelector('.downloadmeme').setAttribute('href', './data/img_watermarked/');
+                    document.querySelector('.downloadmeme').setAttribute('href', '../../data/img_watermarked/');
                     document.querySelector('.downloadmeme').setAttribute('download', imagelink);
-                    /*document.querySelector('.downloadmeme').click();*/
                 }
             }
             xhr.open("GET", "http://localhost:5000/labelimage?pname="+pgname+"&imlink="+imagelink);
             xhr.send();
         }
         else if(this.readyState==4 && this.status==200){
-            document.querySelector('.downloadmeme').setAttribute('href', './data/img_watermarked/');
+            document.querySelector('.downloadmeme').setAttribute('href', '../../data/img_watermarked/'+imagelink);
             document.querySelector('.downloadmeme').setAttribute('download', imagelink);
-            /*document.querySelector('.downloadmeme').click();*/
+            document.querySelector('.downloadmeme').click();
         }
     }
-    xml.open("GET", "./data/img_watermarked/"+imagelink);
+    xml.open("GET", "../../data/img_watermarked/"+imagelink);
     xml.send();
 
 }
