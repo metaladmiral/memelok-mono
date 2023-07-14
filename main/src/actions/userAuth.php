@@ -6,7 +6,7 @@ include 'dbh.php';
 class userAuth extends db {
 
 	public function checkUserameExistence($username) {
-		$val = $_POST['value'];
+		$val = $username;
 		$val = stripslashes(strip_tags($val));
 
 		if(preg_match("/[!@^%\$()=?;+#\/*\[\]\{\}<>|,' -\"]/", $val)) {
@@ -278,7 +278,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])) {
         echo $obj->signup(); 
     }
 	else if($act=='check-username') {
-		echo $obj->checkUserameExistence(); 
+		echo $obj->checkUserameExistence($_POST['usernameInput']); 
 	}
     else {
         header('Location: ../../notfound.html');

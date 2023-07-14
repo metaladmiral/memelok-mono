@@ -77,7 +77,7 @@ function usrncheck() {
         }
         xml.open("POST", "/api/userAuth/check-username");
         var formdata = new FormData();
-        formdata.append("value", val);
+        formdata.append("usernameInput", val);
         xml.send(formdata);
 
     }
