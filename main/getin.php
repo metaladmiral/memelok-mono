@@ -152,7 +152,7 @@ else {
 			<div class="center signup" style="">
 				<!-- pic, fullname, username, email, social media, password, bio, Topics Interesed ,gender, birthday !-->
 
-				<form action="" enctype="multipart/form-data" method="POST" onsubmit="sendOtp();return false;" autocomplete="off">
+				<form action="" enctype="multipart/form-data" method="POST" onsubmit="signupFormSubmit();return false;" autocomplete="off">
 
 					<div class="pic">
 						

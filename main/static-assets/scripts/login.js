@@ -83,10 +83,10 @@ function usrncheck() {
     }
     else {
         document.querySelector('#usrnavl').style.display = "none";
-                    document.querySelector('#usrncheck').style.display = "none";
-                    document.querySelector('#usrnnavl').style.display = "block";
-                    document.querySelector("#signup_btn").setAttribute("disabled", "true");
-                    document.querySelector("#signup_btn").style.cursor = "auto";
+        document.querySelector('#usrncheck').style.display = "none";
+        document.querySelector('#usrnnavl').style.display = "block";
+        document.querySelector("#signup_btn").setAttribute("disabled", "true");
+        document.querySelector("#signup_btn").style.cursor = "auto";
     }
 
 
