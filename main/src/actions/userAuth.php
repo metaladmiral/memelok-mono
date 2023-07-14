@@ -5,12 +5,12 @@ include 'dbh.php';
 
 class userAuth extends db {
 
-	public function checkUserameExistence($username) {
+	public function checkUsernameExistence($username) {
 		$val = $username;
 		$val = stripslashes(strip_tags($val));
 
 		if(preg_match("/[!@^%\$()=?;+#\/*\[\]\{\}<>|,' -\"]/", $val)) {
-			echo '0';
+			return 0;
 		}	
 		else {
 
@@ -19,15 +19,15 @@ class userAuth extends db {
 			$query->execute([$val]);
 
 			if($query->rowCount()>0) {
-				echo '0';
+				return 0;
 			}
 			else {
-				echo '1';
+				return 1;
 			}
 
 		}
 		catch(\Exception $e) {
-			echo $e->getMessage();
+			return $e->getMessage();
 		}
 
 		}
@@ -98,10 +98,13 @@ class userAuth extends db {
 		}
 
 		if(empty($fullname)==true OR empty($username)==true OR empty($pic)==true OR empty($email)==true OR empty($gender)==true OR empty($bio)==true OR empty($birthday)==true OR empty($password)==true) {
-			throw new Exception("2");
+			return 2;
 		}
 		else if($this->checkUserExistence($email)==true){
-			throw new Exception("3");
+			return 3;
+		}
+		else if($this->checkUsernameExistence($email)==true){
+			return 4;
 		}
 		else{
 			if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -191,7 +194,7 @@ class userAuth extends db {
 
 				}
 				catch(\Exception $e) {
-					throw new Exception($e->getMessage());					
+					return $e->getMessage();					
 				}
 
 			}
@@ -278,7 +281,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])) {
         echo $obj->signup(); 
     }
 	else if($act=='check-username') {
-		echo $obj->checkUserameExistence($_POST['usernameInput']); 
+		echo $obj->checkUsernameExistence($_POST['usernameInput']); 
 	}
     else {
         header('Location: ../../notfound.html');

@@ -259,7 +259,7 @@ function removeSignupInputFocus(inputType) {
 
 
 function signupFormSubmit() {
-    if (otpValidated === 1) {
+    // if (otpValidated === 1) {
         document.querySelector(".right .top .spinner").style.display = "block";
         
         var fullname = document.querySelector(".fullname input").value;
@@ -298,10 +298,18 @@ function signupFormSubmit() {
                                 if (response === "1") {
                                     customAlert("Registration Successful! Login to continue.");
                                     setTimeout(function() {
-                                        Location.reload();
+                                        location.reload();
                                     }, 1500);
                                 } else {
-                                    // customAlert(response);
+                                    if(response=='4') {
+                                        customAlert("This username already exists!");
+                                    }
+                                    if(response=='3') {
+                                        customAlert("This Email already has an account on this website!");
+                                    }
+                                    if(response=='2') {
+                                        customAlert("Please Fill all the fields!");
+                                    }
                                 }
                             }, 500);
                         }
@@ -331,7 +339,7 @@ function signupFormSubmit() {
             document.querySelector(".right .top .spinner").style.display = "none";
             customAlert("You must be at least 10 years old to register on IMemes.");
         }
-    }
+    // }
 }
 
 function signinFormSubmit() {
