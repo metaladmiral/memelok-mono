@@ -35,4 +35,6 @@ Memelok is a social media website designed exclusively for memers. It offers a u
    > [memelok_init_DB.sql](DB/memelok_init_DB.sql)
 and import the DB.
 
-7. Now go to http://localhost:{APACHE_PORT}/memelok-mono to access the website.
+7. Now, open the [define.php](main/src/actions/define.php) file and set the values of all variables like paths and mysql username and password.
+
+8. Now go to http://localhost:{APACHE_PORT}/memelok-mono to access the website.
