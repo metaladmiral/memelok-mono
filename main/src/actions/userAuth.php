@@ -15,8 +15,8 @@ class userAuth extends db {
 		else {
 
 		try {
-			$query = db::pconnect()->prepare("SELECT * FROM `users` WHERE `username`='$val'");
-			$query->execute();
+			$query = db::pconnect()->prepare("SELECT * FROM `users` WHERE `username`=?");
+			$query->execute([$val]);
 
 			if($query->rowCount()>0) {
 				echo '0';
