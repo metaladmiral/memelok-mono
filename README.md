@@ -1,3 +1,10 @@
+# Disclaimer
+
+- This project was created in 2017-18 when I was in high school.
+- It is depreciated now and I am in no mood to maintain or re-deploy it just to showcase this as a proof-of-work :)
+- I would have maintained if it was useful even for handful of people. This is not the case so I am not maintaining it.
+- You can just check the codebase to see that I can code. 
+
 # Memelok
 
 Memelok is a social media website designed exclusively for memers. It offers a unique feature that provides full copyright ownership to the creators of memes. As a memer, you have complete control over your creations and can protect them from unauthorized use. Memelok also offers various additional features to enhance your memeing experience.
